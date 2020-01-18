@@ -22,6 +22,10 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import io.fatih.livedatawithflowsample.data.weatherforecast.WeatherForecastRepository
 import io.fatih.livedatawithflowsample.shared.Result
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class WeatherForecastDataStreamViewModel @Inject constructor(
@@ -30,7 +34,19 @@ class WeatherForecastDataStreamViewModel @Inject constructor(
 
     private val _weatherForecast = weatherForecastRepository
         .fetchWeatherForecastRealTime()
-        .asLiveData(viewModelScope.coroutineContext) // Use viewModel scope for auto cancellation
+        .map {
+            // Do some heavy operation. This operation will be done in the
+            // scope of this flow collected. In our case it is the scope
+            // passed to asLiveData extension function
+            // This operation will not block the UI
+            delay(1000)
+            it
+        }
+        .asLiveData(
+            // Use Default dispatcher for CPU intensive work and
+            // viewModel scope for auto cancellation
+            Dispatchers.Default + viewModelScope.coroutineContext
+        )
 
     val weatherForecast: LiveData<Result<Int>>
         get() = _weatherForecast
