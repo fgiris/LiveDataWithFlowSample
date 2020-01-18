@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="io.fatih.livedatawithflowsample.ui.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_weatherForecastOneShotFragment"
+            app:destination="@id/weatherForecastOneShotFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_weatherForecastDataStreamFragment"
+            app:destination="@id/weatherForecastDataStreamFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_weatherForecastDataStreamFlowFragment"
+            app:destination="@id/weatherForecastDataStreamFlowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherForecastDataStreamFragment"
+        android:name="io.fatih.livedatawithflowsample.ui.weatherforecast.datastream.WeatherForecastDataStreamFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/weatherForecastOneShotFragment"
+        android:name="io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot.WeatherForecastOneShotFragment"
+        android:label="WeatherForecastOneShotFragment" />
+    <fragment
+        android:id="@+id/weatherForecastDataStreamFlowFragment"
+        android:name="io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow.WeatherForecastDataStreamFlowFragment"
+        android:label="WeatherForecastDataStreamFlowFragment" />
+</navigation>
