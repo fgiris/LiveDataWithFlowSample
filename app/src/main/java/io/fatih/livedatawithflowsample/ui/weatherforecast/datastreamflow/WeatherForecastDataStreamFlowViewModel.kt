@@ -30,6 +30,9 @@ class WeatherForecastDataStreamFlowViewModel @Inject constructor(
     weatherForecastRepository: WeatherForecastRepository
 ) : ViewModel() {
 
+    private val _weatherForecastOtherDataSource = weatherForecastRepository
+        .fetchWeatherForecastRealTimeOtherDataSource()
+
     private val _weatherForecast = weatherForecastRepository
         .fetchWeatherForecastRealTime()
         .distinctUntilChanged()
@@ -76,8 +79,9 @@ class WeatherForecastDataStreamFlowViewModel @Inject constructor(
             println(throwable)
         }
 
+    // Merge flows when consumer gets
     val weatherForecast: Flow<Result<Int>>
-        get() = _weatherForecast
+        get() = merge(_weatherForecast, _weatherForecastOtherDataSource)
 
     /**
      * This function converts given [celsius] to Fahrenheit.

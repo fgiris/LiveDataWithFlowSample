@@ -37,13 +37,28 @@ class WeatherForecastRepository @Inject constructor() {
 
     /**
      * This method is used to get data stream of fake weather
-     * forecast data in real time
+     * forecast data in real time with 1000 ms delay
      */
     fun fetchWeatherForecastRealTime() = flow {
         emit(Result.Loading)
         // Fake data stream
         while (true) {
             delay(1000)
+            // Send a random fake weather forecast data
+            emit(Result.Success((0..20).random()))
+        }
+    }
+
+    /**
+     * This method is used to get data stream of fake weather
+     * forecast data in real time from another fake data source
+     * with 500 ms delay
+     */
+    fun fetchWeatherForecastRealTimeOtherDataSource() = flow {
+        emit(Result.Loading)
+        // Fake data stream
+        while (true) {
+            delay(500)
             // Send a random fake weather forecast data
             emit(Result.Success((0..20).random()))
         }
