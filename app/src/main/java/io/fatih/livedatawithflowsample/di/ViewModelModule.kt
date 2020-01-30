@@ -25,6 +25,7 @@ import io.fatih.livedatawithflowsample.MainViewModel
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastream.WeatherForecastDataStreamViewModel
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow.WeatherForecastDataStreamFlowViewModel
 import io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot.WeatherForecastOneShotViewModel
+import io.fatih.livedatawithflowsample.ui.weatherforecast.searchcity.SearchCityViewModel
 
 @Module
 abstract class ViewModelModule {
@@ -54,6 +55,13 @@ abstract class ViewModelModule {
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(
         viewModel: MainViewModel
+    ): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchCityViewModel::class)
+    abstract fun bindSearchCityViewModel(
+        viewModel: SearchCityViewModel
     ): ViewModel
 
     @Binds

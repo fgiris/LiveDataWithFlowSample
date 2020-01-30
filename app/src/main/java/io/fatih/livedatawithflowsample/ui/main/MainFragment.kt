@@ -75,5 +75,10 @@ class MainFragment : DaggerFragment() {
             // Enable dark mode
             viewModel.setTheme(Theme.DARK)
         }
+
+        btnFilterCities.setOnClickListener {
+            // Filter city list with using Flow and Channel
+            findNavController().navigate(R.id.action_mainFragment_to_searchCityFragment)
+        }
     }
 }

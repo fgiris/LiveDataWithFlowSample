@@ -22,6 +22,7 @@ import io.fatih.livedatawithflowsample.ui.main.MainFragment
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastream.WeatherForecastDataStreamFragment
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow.WeatherForecastDataStreamFlowFragment
 import io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot.WeatherForecastOneShotFragment
+import io.fatih.livedatawithflowsample.ui.weatherforecast.searchcity.SearchCityFragment
 
 @Module
 abstract class FragmentBuilderModule {
@@ -36,4 +37,7 @@ abstract class FragmentBuilderModule {
 
     @ContributesAndroidInjector
     abstract fun contributeWeatherForecastOneShotFragment(): WeatherForecastOneShotFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSearchCityFragment(): SearchCityFragment
 }
