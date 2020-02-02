@@ -35,6 +35,9 @@ class WeatherForecastDataStreamFlowViewModel @Inject constructor(
 
     private val _weatherForecast = weatherForecastRepository
         .fetchWeatherForecastRealTime()
+        .onStart {
+            emit(Result.Loading)
+        }
         .distinctUntilChanged()
         .filter {
             // There could be millions of data when filtering

@@ -18,6 +18,7 @@ package io.fatih.livedatawithflowsample.data.weatherforecast
 
 import io.fatih.livedatawithflowsample.shared.Result
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -39,8 +40,7 @@ class WeatherForecastRepository @Inject constructor() {
      * This method is used to get data stream of fake weather
      * forecast data in real time with 1000 ms delay
      */
-    fun fetchWeatherForecastRealTime() = flow {
-        emit(Result.Loading)
+    fun fetchWeatherForecastRealTime() : Flow<Result<Int>> = flow {
         // Fake data stream
         while (true) {
             delay(1000)
