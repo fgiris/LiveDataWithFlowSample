@@ -37,6 +37,17 @@ class WeatherForecastRepository @Inject constructor() {
     }
 
     /**
+     * This methods is used to make one shot request to get
+     * fake weather forecast data
+     */
+    suspend fun fetchWeatherForecastSuspendCase(): Result<Int> {
+        // Fake api call
+        delay(1000)
+        // Send a random fake weather forecast data
+        return Result.Success((0..20).random())
+    }
+
+    /**
      * This method is used to get data stream of fake weather
      * forecast data in real time with 1000 ms delay
      */
