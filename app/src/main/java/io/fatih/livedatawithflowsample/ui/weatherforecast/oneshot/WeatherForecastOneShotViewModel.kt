@@ -19,17 +19,26 @@ package io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot
 import androidx.lifecycle.*
 import io.fatih.livedatawithflowsample.data.weatherforecast.WeatherForecastRepository
 import io.fatih.livedatawithflowsample.shared.Result
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class WeatherForecastOneShotViewModel @Inject constructor(
-    private val weatherForecastRepository: WeatherForecastRepository
+    private val weatherForecastRepository: WeatherForecastRepository,
+    private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private var _weatherForecast = MutableLiveData<Result<Int>>()
     val weatherForecast: LiveData<Result<Int>>
         get() = _weatherForecast
 
+    /*val weatherForecast: LiveData<Result<Int>>
+        get() = _weatherForecast.map {
+            // For testing purposes
+            Result.Success(1)
+        }*/
     init {
         fetchWeatherForecast()
     }
@@ -38,7 +47,7 @@ class WeatherForecastOneShotViewModel @Inject constructor(
         // Set value as loading
         _weatherForecast.value = Result.Loading
 
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             // Fetch and update weather forecast LiveData
             _weatherForecast.value = weatherForecastRepository.fetchWeatherForecastSuspendCase()
         }

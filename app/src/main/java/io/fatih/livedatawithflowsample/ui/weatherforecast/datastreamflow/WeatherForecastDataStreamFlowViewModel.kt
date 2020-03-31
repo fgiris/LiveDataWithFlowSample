@@ -86,6 +86,9 @@ class WeatherForecastDataStreamFlowViewModel @Inject constructor(
     val weatherForecast: Flow<Result<Int>>
         get() = merge(_weatherForecast, _weatherForecastOtherDataSource)
 
+    val weatherForecastFlow = weatherForecastRepository
+        .fetchWeatherForecast()
+
     /**
      * This function converts given [celsius] to Fahrenheit.
      *
