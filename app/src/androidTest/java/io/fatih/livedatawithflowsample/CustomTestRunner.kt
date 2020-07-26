@@ -19,6 +19,7 @@ package io.fatih.livedatawithflowsample
 import android.app.Application
 import android.content.Context
 import androidx.test.runner.AndroidJUnitRunner
+import dagger.hilt.android.testing.HiltTestApplication
 
 class CustomTestRunner : AndroidJUnitRunner() {
 
@@ -29,8 +30,8 @@ class CustomTestRunner : AndroidJUnitRunner() {
     ): Application {
         return super.newApplication(
             classLoader,
-            // Use the test application
-            LiveDataWithFlowTestApplication::class.java.name,
+            // Use the test application provided by Hilt
+            HiltTestApplication::class.java.name,
             context
         )
     }

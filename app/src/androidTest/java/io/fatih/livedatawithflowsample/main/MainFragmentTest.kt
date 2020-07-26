@@ -16,29 +16,40 @@
 
 package io.fatih.livedatawithflowsample.main
 
-import androidx.fragment.app.testing.FragmentScenario
-import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.UninstallModules
 import io.fatih.livedatawithflowsample.R
+import io.fatih.livedatawithflowsample.di.modules.CoroutineModule
 import io.fatih.livedatawithflowsample.ui.main.MainFragment
+import io.fatih.livedatawithflowsample.util.launchFragmentInHiltContainer
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
+@UninstallModules(CoroutineModule::class)
+@HiltAndroidTest
 class MainFragmentTest {
+
+    @get:Rule
+    val hiltRule = HiltAndroidRule(this)
 
     // Test navigation controller for MainFragment
     lateinit var testNavController: TestNavHostController
 
     @Before
     fun setup() {
-        val fragmentScenario = launchFragmentInContainer { MainFragment() }
         setupTestNavigationController()
-        setupFragmentWithTestNavigationController(fragmentScenario)
+        launchFragmentInHiltContainer<MainFragment> {
+            // Setup MainFragment with test navigation controller
+            Navigation.setViewNavController(requireView(), testNavController)
+        }
     }
 
     @Test
@@ -56,15 +67,6 @@ class MainFragmentTest {
             // Set the graph and the current destination for MainFragment
             it.setGraph(R.navigation.main_nav_graph)
             it.setCurrentDestination(R.id.mainFragment)
-        }
-    }
-
-    private fun setupFragmentWithTestNavigationController(
-        fragmentScenario: FragmentScenario<MainFragment>
-    ) {
-        // Setup MainFragment with test navigation controller
-        fragmentScenario.onFragment {
-            Navigation.setViewNavController(it.requireView(), testNavController)
         }
     }
 }

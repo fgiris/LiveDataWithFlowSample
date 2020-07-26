@@ -19,6 +19,8 @@ package io.fatih.livedatawithflowsample.di.module
 import android.os.AsyncTask
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import io.fatih.livedatawithflowsample.di.DispatcherDefault
 import io.fatih.livedatawithflowsample.di.DispatcherIo
 import io.fatih.livedatawithflowsample.di.DispatcherMain
@@ -32,6 +34,7 @@ import kotlinx.coroutines.asCoroutineDispatcher
  * See:
  * https://medium.com/androiddevelopers/coroutines-patterns-for-work-that-shouldnt-be-cancelled-e26c40f142ad
  */
+@InstallIn(ApplicationComponent::class)
 @Module
 object TestCoroutineModule {
 

@@ -41,6 +41,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -100,6 +105,10 @@ dependencies {
     // Dagger for android tests
     kaptAndroidTest "com.google.dagger:dagger-android-processor:$dagger_version"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // Hilt for android tests
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Navigation testing
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_testing_version"
