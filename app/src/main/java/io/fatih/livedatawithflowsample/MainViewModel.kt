@@ -16,6 +16,7 @@
 
 package io.fatih.livedatawithflowsample
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -28,7 +29,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-class MainViewModel @Inject constructor(
+class MainViewModel @ViewModelInject constructor(
     private val themeDataSource: ThemeDataSource
 ) : ViewModel() {
     // Whenever there is a change in theme, it will be

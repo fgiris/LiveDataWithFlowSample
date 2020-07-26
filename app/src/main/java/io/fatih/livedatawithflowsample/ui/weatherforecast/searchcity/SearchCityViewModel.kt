@@ -16,15 +16,15 @@
 
 package io.fatih.livedatawithflowsample.ui.weatherforecast.searchcity
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class SearchCityViewModel @Inject constructor() : ViewModel() {
+class SearchCityViewModel @ViewModelInject constructor() : ViewModel() {
     val cityList = listOf(
         "Los Angeles", "Chicago", "Indianapolis", "Phoenix", "Houston",
         "Denver", "Las Vegas", "Philadelphia", "Portland", "Seattle"

@@ -22,6 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
@@ -34,10 +35,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class WeatherForecastDataStreamFlowFragment : Fragment() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var viewModel: WeatherForecastDataStreamFlowViewModel
+    private val viewModel: WeatherForecastDataStreamFlowViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,12 +47,6 @@ class WeatherForecastDataStreamFlowFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // Obtain viewModel
-        viewModel = ViewModelProviders.of(
-            this,
-            viewModelFactory
-        ).get(WeatherForecastDataStreamFlowViewModel::class.java)
 
         // Consume data when fragment is started
         lifecycleScope.launchWhenStarted {

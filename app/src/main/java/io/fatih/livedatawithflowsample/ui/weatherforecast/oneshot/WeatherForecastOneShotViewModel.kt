@@ -16,15 +16,15 @@
 
 package io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import io.fatih.livedatawithflowsample.data.weatherforecast.WeatherForecastRepository
 import io.fatih.livedatawithflowsample.shared.Result
-import javax.inject.Inject
 
-class WeatherForecastOneShotViewModel @Inject constructor(
+class WeatherForecastOneShotViewModel @ViewModelInject constructor(
     weatherForecastRepository: WeatherForecastRepository
 ) : ViewModel() {
 

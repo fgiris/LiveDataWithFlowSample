@@ -22,22 +22,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import dagger.android.support.DaggerFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.fatih.livedatawithflowsample.R
 import io.fatih.livedatawithflowsample.shared.Result
 import kotlinx.android.synthetic.main.fragment_weather_forecast_one_shot.*
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class WeatherForecastOneShotFragment : Fragment() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var viewModel: WeatherForecastOneShotViewModel
+    private val viewModel: WeatherForecastOneShotViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,12 +43,6 @@ class WeatherForecastOneShotFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // Obtain viewModel
-        viewModel = ViewModelProviders.of(
-            this,
-            viewModelFactory
-        ).get(WeatherForecastOneShotViewModel::class.java)
 
         // It is always a good practice to use viewLifecycleOwner since
         // lifecycle of fragment might be longer than its view in some cases

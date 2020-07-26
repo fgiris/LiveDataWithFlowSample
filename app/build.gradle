@@ -54,6 +54,8 @@ dependencies {
     def fragment_testing_version = "1.2.5"
     def navigation_testing_version = "2.3.0"
     def hilt_version = "2.28-alpha"
+    def hilt_view_model_version = "1.0.0-alpha02"
+    def hilt_androidx_processor_version = "1.0.0-alpha02"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     // Kotlin
@@ -85,6 +87,10 @@ dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // Hilt ViewModel
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_view_model_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_androidx_processor_version"
 
     // Test
     testImplementation 'junit:junit:4.12'

@@ -16,6 +16,7 @@
 
 package io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import io.fatih.livedatawithflowsample.data.weatherforecast.WeatherForecastRepository
 import io.fatih.livedatawithflowsample.di.DispatcherDefault
@@ -27,7 +28,7 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
-class WeatherForecastDataStreamFlowViewModel @Inject constructor(
+class WeatherForecastDataStreamFlowViewModel @ViewModelInject constructor(
     weatherForecastRepository: WeatherForecastRepository,
     @DispatcherDefault defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {

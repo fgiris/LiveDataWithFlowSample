@@ -22,21 +22,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import io.fatih.livedatawithflowsample.R
 import kotlinx.android.synthetic.main.fragment_search_city.*
 import kotlinx.coroutines.flow.collect
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchCityFragment : Fragment() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var viewModel: SearchCityViewModel
+    private val viewModel: SearchCityViewModel by viewModels()
     private lateinit var adapter: SearchCityAdapter
 
     override fun onCreateView(
@@ -48,12 +44,6 @@ class SearchCityFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // Obtain viewModel
-        viewModel = ViewModelProviders.of(
-            this,
-            viewModelFactory
-        ).get(SearchCityViewModel::class.java)
 
         initView()
         observeFilteredCities()

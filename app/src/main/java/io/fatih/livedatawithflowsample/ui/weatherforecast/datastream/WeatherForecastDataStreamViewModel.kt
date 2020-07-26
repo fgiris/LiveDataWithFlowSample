@@ -16,6 +16,7 @@
 
 package io.fatih.livedatawithflowsample.ui.weatherforecast.datastream
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -28,7 +29,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class WeatherForecastDataStreamViewModel @Inject constructor(
+class WeatherForecastDataStreamViewModel @ViewModelInject constructor(
     weatherForecastRepository: WeatherForecastRepository,
     @DispatcherDefault defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
