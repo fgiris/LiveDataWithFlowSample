@@ -21,17 +21,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import io.fatih.livedatawithflowsample.R
 import io.fatih.livedatawithflowsample.shared.Result
 import kotlinx.android.synthetic.main.fragment_weather_forecast_one_shot.*
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
-class WeatherForecastDataStreamFlowFragment : DaggerFragment() {
+@AndroidEntryPoint
+class WeatherForecastDataStreamFlowFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
