@@ -18,11 +18,14 @@ package io.fatih.livedatawithflowsample.di.modules
 
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import io.fatih.livedatawithflowsample.di.DispatcherDefault
 import io.fatih.livedatawithflowsample.di.DispatcherIo
 import io.fatih.livedatawithflowsample.di.DispatcherMain
 import kotlinx.coroutines.Dispatchers
 
+@InstallIn(ApplicationComponent::class)
 @Module
 object CoroutineModule {
 

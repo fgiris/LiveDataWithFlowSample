@@ -20,21 +20,24 @@ import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import io.fatih.livedatawithflowsample.LiveDataWithFlowApplication
+import dagger.android.AndroidInjectionModule
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import io.fatih.livedatawithflowsample.Constants
 
-@Module
+@InstallIn(ApplicationComponent::class)
+// TODO: Remove AndroidInjectionModule after migrating all fragments and activities to Hilt
+@Module(includes = [AndroidInjectionModule::class])
 class AppModule {
-    @Provides
-    fun provideContext(application: LiveDataWithFlowApplication): Context {
-        return application.applicationContext
-    }
 
     @Provides
-    fun provideSharedPreferences(context: Context): SharedPreferences {
+    fun provideSharedPreferences(
+        @ApplicationContext context: Context
+    ): SharedPreferences {
         return context.getSharedPreferences(
-                Constants.SHARED_PREFERENCES_NAME,
-                Context.MODE_PRIVATE
+            Constants.SHARED_PREFERENCES_NAME,
+            Context.MODE_PRIVATE
         )
     }
 }

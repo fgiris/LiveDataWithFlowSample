@@ -18,12 +18,15 @@ package io.fatih.livedatawithflowsample.di.modules
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import io.fatih.livedatawithflowsample.ui.main.MainFragment
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastream.WeatherForecastDataStreamFragment
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow.WeatherForecastDataStreamFlowFragment
 import io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot.WeatherForecastOneShotFragment
 import io.fatih.livedatawithflowsample.ui.weatherforecast.searchcity.SearchCityFragment
 
+@InstallIn(ApplicationComponent::class)
 @Module
 abstract class FragmentBuilderModule {
     @ContributesAndroidInjector

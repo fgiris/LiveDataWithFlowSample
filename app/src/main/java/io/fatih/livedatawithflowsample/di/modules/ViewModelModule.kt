@@ -20,6 +20,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import dagger.multibindings.IntoMap
 import io.fatih.livedatawithflowsample.MainViewModel
 import io.fatih.livedatawithflowsample.di.ViewModelKey
@@ -29,6 +31,7 @@ import io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow.Weather
 import io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot.WeatherForecastOneShotViewModel
 import io.fatih.livedatawithflowsample.ui.weatherforecast.searchcity.SearchCityViewModel
 
+@InstallIn(ApplicationComponent::class)
 @Module
 abstract class ViewModelModule {
     @Binds

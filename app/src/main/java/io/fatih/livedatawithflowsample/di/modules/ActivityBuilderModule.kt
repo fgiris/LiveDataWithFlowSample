@@ -18,8 +18,11 @@ package io.fatih.livedatawithflowsample.di.modules
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import io.fatih.livedatawithflowsample.MainActivity
 
+@InstallIn(ApplicationComponent::class)
 @Module
 abstract class ActivityBuilderModule {
     @ContributesAndroidInjector
