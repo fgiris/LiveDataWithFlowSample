@@ -20,15 +20,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import dagger.android.AndroidInjectionModule
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.fatih.livedatawithflowsample.Constants
 
 @InstallIn(ApplicationComponent::class)
-// TODO: Remove AndroidInjectionModule after migrating all fragments and activities to Hilt
-@Module(includes = [AndroidInjectionModule::class])
+@Module
 class AppModule {
 
     @Provides
