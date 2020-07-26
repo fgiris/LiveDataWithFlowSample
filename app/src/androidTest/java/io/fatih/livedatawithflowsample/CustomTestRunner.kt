@@ -16,12 +16,22 @@
 
 package io.fatih.livedatawithflowsample
 
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
-import io.fatih.livedatawithflowsample.di.DaggerAppComponent
+import android.app.Application
+import android.content.Context
+import androidx.test.runner.AndroidJUnitRunner
 
-open class LiveDataWithFlowApplication : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.builder().create(this)
+class CustomTestRunner : AndroidJUnitRunner() {
+
+    override fun newApplication(
+        classLoader: ClassLoader?,
+        className: String?,
+        context: Context?
+    ): Application {
+        return super.newApplication(
+            classLoader,
+            // Use the test application
+            LiveDataWithFlowTestApplication::class.java.name,
+            context
+        )
     }
 }
