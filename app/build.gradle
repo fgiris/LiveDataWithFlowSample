@@ -18,6 +18,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29
@@ -52,6 +53,7 @@ dependencies {
     def dagger_version = "2.28"
     def fragment_testing_version = "1.2.5"
     def navigation_testing_version = "2.3.0"
+    def hilt_version = "2.28-alpha"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     // Kotlin
@@ -79,6 +81,10 @@ dependencies {
     api "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Test
     testImplementation 'junit:junit:4.12'
