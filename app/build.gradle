@@ -50,6 +50,8 @@ dependencies {
     def nav_version = "2.3.0"
     def coroutines_version = "1.3.8"
     def dagger_version = "2.28"
+    def fragment_testing_version = "1.2.5"
+    def navigation_testing_version = "2.3.0"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     // Kotlin
@@ -86,4 +88,10 @@ dependencies {
     // Dagger for android tests
     kaptAndroidTest "com.google.dagger:dagger-android-processor:$dagger_version"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$dagger_version"
+
+    // Navigation testing
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation_testing_version"
+
+    // Fragment testing
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_testing_version"
 }
