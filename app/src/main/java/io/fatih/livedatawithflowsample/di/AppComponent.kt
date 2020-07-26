@@ -19,7 +19,7 @@ package io.fatih.livedatawithflowsample.di
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
-import io.fatih.livedatawithflowsample.Application
+import io.fatih.livedatawithflowsample.LiveDataWithFlowApplication
 import javax.inject.Singleton
 
 @Singleton
@@ -32,7 +32,7 @@ import javax.inject.Singleton
         ViewModelModule::class
     ]
 )
-interface AppComponent : AndroidInjector<Application> {
+interface AppComponent : AndroidInjector<LiveDataWithFlowApplication> {
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<Application>()
+    abstract class Builder : AndroidInjector.Builder<LiveDataWithFlowApplication>()
 }

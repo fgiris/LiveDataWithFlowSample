@@ -20,13 +20,13 @@ import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import io.fatih.livedatawithflowsample.Application
+import io.fatih.livedatawithflowsample.LiveDataWithFlowApplication
 import io.fatih.livedatawithflowsample.Constants
 
 @Module
 class AppModule {
     @Provides
-    fun provideContext(application: Application): Context {
+    fun provideContext(application: LiveDataWithFlowApplication): Context {
         return application.applicationContext
     }
 
