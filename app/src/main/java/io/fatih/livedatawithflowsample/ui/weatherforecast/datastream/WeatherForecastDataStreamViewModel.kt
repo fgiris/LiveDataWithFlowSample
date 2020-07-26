@@ -21,15 +21,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import io.fatih.livedatawithflowsample.data.weatherforecast.WeatherForecastRepository
+import io.fatih.livedatawithflowsample.di.DispatcherDefault
 import io.fatih.livedatawithflowsample.shared.Result
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class WeatherForecastDataStreamViewModel @Inject constructor(
-    weatherForecastRepository: WeatherForecastRepository
+    weatherForecastRepository: WeatherForecastRepository,
+    @DispatcherDefault defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _weatherForecast = weatherForecastRepository
@@ -45,7 +46,7 @@ class WeatherForecastDataStreamViewModel @Inject constructor(
         .asLiveData(
             // Use Default dispatcher for CPU intensive work and
             // viewModel scope for auto cancellation
-            Dispatchers.Default + viewModelScope.coroutineContext
+            viewModelScope.coroutineContext + defaultDispatcher
         )
 
     val weatherForecast: LiveData<Result<Int>>

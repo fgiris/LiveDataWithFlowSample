@@ -20,6 +20,7 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import io.fatih.livedatawithflowsample.LiveDataWithFlowApplication
+import io.fatih.livedatawithflowsample.di.modules.*
 import javax.inject.Singleton
 
 @Singleton
@@ -29,7 +30,8 @@ import javax.inject.Singleton
         AppModule::class,
         FragmentBuilderModule::class,
         ActivityBuilderModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        CoroutineModule::class
     ]
 )
 interface AppComponent : AndroidInjector<LiveDataWithFlowApplication> {

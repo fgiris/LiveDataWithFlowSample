@@ -18,8 +18,9 @@ package io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow
 
 import androidx.lifecycle.ViewModel
 import io.fatih.livedatawithflowsample.data.weatherforecast.WeatherForecastRepository
+import io.fatih.livedatawithflowsample.di.DispatcherDefault
 import io.fatih.livedatawithflowsample.shared.Result
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
@@ -27,7 +28,8 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 class WeatherForecastDataStreamFlowViewModel @Inject constructor(
-    weatherForecastRepository: WeatherForecastRepository
+    weatherForecastRepository: WeatherForecastRepository,
+    @DispatcherDefault defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _weatherForecastOtherDataSource = weatherForecastRepository
@@ -74,7 +76,7 @@ class WeatherForecastDataStreamFlowViewModel @Inject constructor(
             // save the modified data to cache
             println("$it has modified and reached until onEach operator")
         }
-        .flowOn(Dispatchers.Default) // Changes the context of flow
+        .flowOn(defaultDispatcher) // Changes the context of flow
         .catch { throwable ->
             // Catch exceptions in all down stream flow
             // Any error occurs after this catch operator

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.fatih.livedatawithflowsample.di
+package io.fatih.livedatawithflowsample.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -22,6 +22,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import io.fatih.livedatawithflowsample.MainViewModel
+import io.fatih.livedatawithflowsample.di.ViewModelKey
+import io.fatih.livedatawithflowsample.di.ViewModelProviderFactory
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastream.WeatherForecastDataStreamViewModel
 import io.fatih.livedatawithflowsample.ui.weatherforecast.datastreamflow.WeatherForecastDataStreamFlowViewModel
 import io.fatih.livedatawithflowsample.ui.weatherforecast.oneshot.WeatherForecastOneShotViewModel

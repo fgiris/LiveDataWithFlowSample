@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.fatih.livedatawithflowsample.di
+package io.fatih.livedatawithflowsample.di.modules
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
