@@ -18,8 +18,10 @@ package io.fatih.livedatawithflowsample
 
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+import dagger.hilt.android.HiltAndroidApp
 import io.fatih.livedatawithflowsample.di.DaggerAppComponent
 
+@HiltAndroidApp
 open class LiveDataWithFlowApplication : DaggerApplication() {
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerAppComponent.builder().create(this)
