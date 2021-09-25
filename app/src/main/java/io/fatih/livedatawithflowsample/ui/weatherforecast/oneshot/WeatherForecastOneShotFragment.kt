@@ -41,8 +41,8 @@ class WeatherForecastOneShotFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_weather_forecast_one_shot, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // It is always a good practice to use viewLifecycleOwner since
         // lifecycle of fragment might be longer than its view in some cases
